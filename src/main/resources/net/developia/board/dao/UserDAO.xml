@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.developia.board.dao.BoardDAO">
+
+	<select id="getMain" resultType="String" parameterType="String">
+		select content from code where language=#{id};
+	</select>
+	
+</mapper>
