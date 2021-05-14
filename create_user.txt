@@ -1,0 +1,14 @@
+OS> sqlplus system/oracle@localhost:1521/xepdb1
+
+SQL> create user myuser
+       identified by myuser
+       default tablespace users
+       temporary tablespace temp;
+
+  SQL> alter user myuser 
+       quota unlimited on users;
+
+  SQL> grant connect, resource
+          to myuser;
+
+OS> sqlplus myuser myuser@localhost:1521/xepdb1
