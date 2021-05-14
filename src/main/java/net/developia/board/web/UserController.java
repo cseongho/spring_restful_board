@@ -1,6 +1,5 @@
 package net.developia.board.web;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
 import net.developia.board.dto.UserDTO;
@@ -26,9 +24,13 @@ public class UserController {
 	
 	@GetMapping()
 	public String login() {
-		return "user/login";
+		return "redirect:user/";
 	}
 	
+	@GetMapping(value="/")
+	public String login2() {
+		return "user/login";
+	}
 	
 	@PostMapping()
 	public String login(
@@ -41,7 +43,7 @@ public class UserController {
 			log.info(userInfo.toString());
 			
 			session.setAttribute("userInfo", userInfo);
-			return "redirect:../board/";
+			return "redirect:../board";
 		} catch (Exception e) {
 			log.info(e.getMessage());
 			model.addAttribute("msg",e.getMessage());

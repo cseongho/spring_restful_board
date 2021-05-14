@@ -5,6 +5,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 <configuration>
    <typeAliases>
-      <typeAlias type="net.developia.board.jqueryui.ItemVO" alias="ItemVO"/>
+      <typeAlias type="net.developia.board.dto.UserDTO" alias="UserDTO"/>
    </typeAliases>
 </configuration>

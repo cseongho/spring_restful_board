@@ -20,7 +20,7 @@
 	
 	<bean id="userSqlSession" class="org.mybatis.spring.SqlSessionFactoryBean"
 		p:dataSource-ref="dataSource"
-		p:typeAliasesPackage="net.developia.board.dao" />
+		p:typeAliasesPackage="net.developia.board.dto" />
 	<!-- typeAliasesPackage가 두개 이상일 경우 콤마로 구분 -->
 	
 	<bean id="userDAO" class="org.mybatis.spring.mapper.MapperFactoryBean" 
