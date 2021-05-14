@@ -4,17 +4,27 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-	<!-- Root Context: defines shared resources visible to all other web components -->
-	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean" 
-		p:jndiName="java:comp/env/jdbc/mydbcp" />
+	<bean 
+ 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+		p:location="/WEB-INF/spring/database.properties" />
+		
+	<bean 
+		id="dataSource"
+		class="com.zaxxer.hikari.HikariDataSource"
+		p:username="${username}"
+		p:password="${password}"
+		p:jdbcUrl="${url}"
+		p:driverClassName="${driver}"
+		p:maximumPoolSize="20"
+		/>
 	
 	<bean id="userSqlSession" class="org.mybatis.spring.SqlSessionFactoryBean"
 		p:dataSource-ref="dataSource"
-		p:typeAliasesPackage="net.developia.restful.user" />
+		p:typeAliasesPackage="net.developia.board.dao" />
 	<!-- typeAliasesPackage가 두개 이상일 경우 콤마로 구분 -->
 	
 	<bean id="userDAO" class="org.mybatis.spring.mapper.MapperFactoryBean" 
 		p:sqlSessionFactory-ref="userSqlSession"
-		p:mapperInterface="net.developia.restful.user.UserDAO" />
+		p:mapperInterface="net.developia.board.dao.UserDAO" />
 	
 </beans>
