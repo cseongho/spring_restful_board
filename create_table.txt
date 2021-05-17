@@ -38,7 +38,7 @@ CREATE TABLE t_article
 (
 	art_no number NOT NULL,
 	art_title varchar2(200) NOT NULL,
-	art_content varchar2(4000) NOT NULL,
+	art_content clob NOT NULL,
 	art_like number(5) DEFAULT 0 NOT NULL,
 	art_dislike number(5) DEFAULT 0 NOT NULL,
 	art_regdate date DEFAULT sysdate NOT NULL,
@@ -85,7 +85,7 @@ ALTER TABLE t_comment
 	REFERENCES t_user (usr_no);
 
 
-테스트용 데이터 입력
+/*테스트용 데이터 입력*/
 /* Create Records */
 insert into t_user(usr_no,	usr_id, usr_pw, usr_name, usr_info)
 values(seq_user.nextval, 'next', '비밀번호','신해철','쵝오의 뮤지션');
@@ -99,7 +99,10 @@ values(seq_board.nextval, '공지 사항', 2);
 insert into t_board(boa_no, boa_name, usr_no)
 values(seq_board.nextval, 'Q&A 게시판', 1);
 
-commit
+update t_user set
+       usr_pw='33275a8aa48ea918bd53a9181aa975f15ab0d0645398f5918a006d08675c1cb27d5c645dbd084eee56e675e25ba4019f2ecea37ca9e2995b49fcb12c096a032e';
+commit;
+
 
 select * from t_board;
 select * from t_user;

@@ -27,4 +27,12 @@
 		p:sqlSessionFactory-ref="userSqlSession"
 		p:mapperInterface="net.developia.board.dao.UserDAO" />
 	
+	<bean id="boardSqlSession" class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="dataSource"
+		p:typeAliasesPackage="net.developia.board.dto" />
+	
+	<bean id="boardDAO" class="org.mybatis.spring.mapper.MapperFactoryBean" 
+		p:sqlSessionFactory-ref="boardSqlSession"
+		p:mapperInterface="net.developia.board.dao.BoardDAO" />
+	
 </beans>

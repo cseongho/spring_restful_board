@@ -1,7 +1,5 @@
 package net.developia.board.web;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,30 +8,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.slf4j.Slf4j;
+import net.developia.board.dto.ArticleDTO;
 import net.developia.board.service.BoardService;
-
 
 @Slf4j
 @Controller
-@RequestMapping("board")
-public class BoardController {
-	
-//	@Autowired
-//	private BoardService boardService;
-	
-	@GetMapping()
-	public String list() {
-		return "redirect:board/";
-	}
-	
+@RequestMapping("board/{boa_no}/{pg}/{art_no}")
+public class ArticleDetailController {
+		
+	@Autowired
+	private BoardService boardService;
+
 	@GetMapping("/")
-	public String list2() {
-		return "board/board_list";
-	}
+	public void detail() {}
 	
-//	@GetMapping("insert")
-//	public dtoid insert() {}
-//	
-//	@PostMapping("insert")
-//	public dtoid insert(@ModelAttribute BoardDTO boardDTO) {}
+	@GetMapping("/update")
+	public void update() {}
+	
+	@PostMapping("/update")
+	public void update(@ModelAttribute ArticleDTO articleDTO) {}
+	
+	@GetMapping("/delete")
+	public void delete(long no) {}
 }
