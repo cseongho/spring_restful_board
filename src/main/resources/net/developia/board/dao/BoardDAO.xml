@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.developia.board.dao.BoardDAO">
+
+	<select id="getBoardList" resultType="BoardDTO">
+		select b.boa_no, 
+		       b.boa_name, 
+		       u.usr_no as "userDTO.usr_no", 
+		       u.usr_id as "userDTO.usr_id", 
+		       u.usr_name as "userDTO.usr_name"
+		from   t_board b 
+		inner  join t_user u on b.usr_no = u.usr_no where  b.boa_status = 1
+		order  by b.boa_no desc
+	</select>
+
+	<insert id="insertBoard" parameterType="BoardDTO">
+		insert into t_board(boa_no, boa_name, usr_no)
+		values(seq_board.nextval, #{boa_name}, #{userDTO.usr_no})	
+	</insert>
+
+</mapper>

@@ -217,6 +217,13 @@
 		    <artifactId>jackson-dataformat-xml</artifactId>
 		    <version>${com.jackson-databind}</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api -->
+		<dependency>
+		         <groupId>javax.annotation</groupId>
+		         <artifactId>javax.annotation-api</artifactId>
+		         <version>1.3.2</version>
+		</dependency>
 
 	</dependencies>
 	<build>

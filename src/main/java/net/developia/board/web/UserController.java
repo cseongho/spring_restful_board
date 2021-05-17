@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
 import net.developia.board.dto.UserDTO;
@@ -51,4 +52,17 @@ public class UserController {
 			return "result";
 		}
 	}
+	
+	@GetMapping("/logout")
+	public ModelAndView logout(HttpSession session) {
+		UserDTO userInfo = (UserDTO) session.getAttribute("userInfo");
+		session.invalidate();
+		
+		ModelAndView mav = new ModelAndView("result");
+		mav.addObject("msg", userInfo.getUsr_name() + 
+				 "(" + userInfo.getUsr_id() + ")님이 로그아웃 하였습니다.");
+		mav.addObject("url", "./");
+		return mav;
+	}
+	
 }

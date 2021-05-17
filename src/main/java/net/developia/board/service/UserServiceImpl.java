@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
 		try {
 			UserDTO userInfo = userDAO.getUser(userDTO);
 			if (userInfo == null) {
-				throw new RuntimeException("아이디 혹은 비밀번호가 틀립니다.");
+				throw new RuntimeException("");
 			}
 			return userInfo;
 		} catch (Exception e) {
