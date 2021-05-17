@@ -18,4 +18,6 @@ public interface BoardDAO {
 
 	List<ArticleDTO> getArticleList(int boa_no) throws SQLException;
 
+	ArticleDTO getDetail(long art_no) throws SQLException;
+
 }

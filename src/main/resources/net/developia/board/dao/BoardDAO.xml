@@ -44,4 +44,21 @@
 		inner  join t_user u on a.usr_no = u.usr_no where a.boa_no = #{boa_no}
 		order  by a.art_no desc
 	</select>
+	
+	<select id="getDetail" parameterType="long" resultType="ArticleDTO">
+		select art_no, 
+			   art_title, 
+			   art_content, 
+			   art_like, 
+			   art_dislike, 
+		       art_regdate, 
+		       art_readcnt, 
+		       art_com_cnt, 
+		       art_ip, boa_no, 
+		       usr_no as "userDTO.usr_no", 
+		       usr_id as "userDTO.usr_id",
+		       usr_name as "userDTO.usr_name"
+		from   t_article 
+		inner join t_user using (usr_no) where art_no = #{art_no}
+	</select>
 </mapper>
