@@ -13,11 +13,11 @@
 	<caption>로그인</caption>
 <tr>
 	<th>아이디</th>
-	<td><input type="text" name="usr_id" autofocus="autofocus" required="required"/></td>
+	<td><input type="text" name="usr_id" autofocus="autofocus" required="required" value="next"/></td>
 </tr>
 <tr>
 	<th>비밀번호</th>
-	<td><input type="password" name="usr_pw" required="required"/></td>
+	<td><input type="password" name="usr_pw" required="required" value="1111"/></td>
 </tr>
 <tr>
 	<td colspan="2" align="center">

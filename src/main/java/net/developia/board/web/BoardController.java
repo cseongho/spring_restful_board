@@ -2,6 +2,7 @@ package net.developia.board.web;
 
 import java.util.List;
 
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -29,7 +30,12 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
-	@GetMapping()
+	@GetMapping
+	public String list() {
+		return "redirect:board/";
+	}
+	
+	@GetMapping("/")
 	public String list(Model model) {
 		try {
 			List<BoardDTO> list = boardService.getBoardList();
@@ -37,11 +43,6 @@ public class BoardController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:board/";
-	}
-	
-	@GetMapping(value={"/"})
-	public String list2() {
 		return "board/board_list";
 	}
 	

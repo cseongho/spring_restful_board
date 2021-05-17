@@ -19,4 +19,29 @@
 		values(seq_board.nextval, #{boa_name}, #{userDTO.usr_no})	
 	</insert>
 
+	<insert id="insertArticle" parameterType="ArticleDTO">
+		insert into t_article(art_no, art_title, art_content, art_ip, boa_no, usr_no)
+		values(seq_article.nextval, #{art_title},#{art_content}, #{art_ip}, #{boa_no}, #{userDTO.usr_no})
+	</insert>
+	
+	<select id="getBoard" parameterType="int" resultType="BoardDTO">
+		select b.boa_no, 
+			   b.boa_name, 
+		       u.usr_name as "userDTO.usr_name", 
+		       u.usr_id   as "userDTO.usr_id"
+		from   t_board b 
+		inner  join t_user u on b.usr_no = u.usr_no where b.boa_no = #{boa_no}
+	</select>
+	
+	<select id="getArticleList" parameterType="int" resultType="ArticleDTO">
+		select a.art_no, 
+			   a.art_title, 
+			   a.art_regdate, 
+			   a.art_readcnt,
+		       u.usr_id as "userDTO.usr_id",
+		       u.usr_name as "userDTO.usr_name"
+		from   t_article a 
+		inner  join t_user u on a.usr_no = u.usr_no where a.boa_no = #{boa_no}
+		order  by a.art_no desc
+	</select>
 </mapper>
