@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.util.CookieGenerator;
 
 import lombok.extern.slf4j.Slf4j;
 import net.developia.board.dto.ArticleDTO;
@@ -30,8 +29,15 @@ public class ArticleDetailController {
 	private BoardService boardService;
 
 	@GetMapping("/")
-	public String detail(@PathVariable int boa_no, @PathVariable long pg, @PathVariable long art_no, Model model,
-			HttpServletRequest request, HttpServletResponse response, String cookieName, String art_temp) {
+	public String detail(@PathVariable int boa_no, 
+					 	 @PathVariable long pg, 
+					 	 @PathVariable long art_no, 
+					 	 Model model,
+					 	 HttpServletRequest request, 
+					 	 HttpServletResponse response, 
+					 	 String cookieName, 
+					 	 String art_temp) 
+	{
 
 		log.info("" + boa_no);
 		log.info("" + pg);
@@ -56,8 +62,15 @@ public class ArticleDetailController {
 	}
 
 	@GetMapping("/update")
-	public String update(@PathVariable int boa_no, @PathVariable long pg, @PathVariable long art_no, Model model,
-			HttpServletRequest request, HttpServletResponse response, String cookieName, String art_temp) {
+	public String update(@PathVariable int boa_no, 
+						 @PathVariable long pg, 
+						 @PathVariable long art_no, 
+						 Model model,
+						 HttpServletRequest request, 
+						 HttpServletResponse response, 
+						 String cookieName, 
+						 String art_temp) 
+	{
 		
 		try {
 			if (chkVisited(request, response, Long.toString(boa_no), Long.toString(art_no)) == 0) {
@@ -76,7 +89,9 @@ public class ArticleDetailController {
 	}
 
 	@PostMapping("/update")
-	public ModelAndView update(@ModelAttribute ArticleDTO articleDTO, HttpSession session) {
+	public ModelAndView update(@ModelAttribute ArticleDTO articleDTO, 
+							   HttpSession session) 
+	{
 		articleDTO.setUserDTO((UserDTO) session.getAttribute("userInfo"));
 		try {
 			boardService.updateArticle(articleDTO);
@@ -94,7 +109,9 @@ public class ArticleDetailController {
 	}
 
 	@GetMapping("/delete")
-	public ModelAndView delete(@ModelAttribute ArticleDTO articleDTO, HttpSession session) {
+	public ModelAndView delete(@ModelAttribute ArticleDTO articleDTO, 
+							   HttpSession session) 
+	{
 		articleDTO.setUserDTO((UserDTO) session.getAttribute("userInfo"));
 
 		try {
@@ -112,7 +129,12 @@ public class ArticleDetailController {
 		}
 	}
 
-	private int chkVisited(HttpServletRequest request, HttpServletResponse response, String cookieName, String art_no) {
+	
+	private int chkVisited(HttpServletRequest request, 
+					 	   HttpServletResponse response, 
+					 	   String cookieName, 
+					 	   String art_no) 
+	{
 		int isVisit = 0; 
 		int isVisitPage = 0; 
 		Cookie[] cookies = request.getCookies();

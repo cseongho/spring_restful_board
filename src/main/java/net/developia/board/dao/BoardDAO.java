@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.developia.board.dto.ArticleDTO;
 import net.developia.board.dto.BoardDTO;
+import net.developia.board.dto.CommentDTO;
 
 public interface BoardDAO {
 
@@ -26,4 +27,11 @@ public interface BoardDAO {
 
 	int updateArticle(ArticleDTO articleDTO) throws SQLException;
 
+	void insertComment(CommentDTO commentDTO) throws SQLException;
+	
+	List<CommentDTO> getCommentList(CommentDTO commentDTO) throws SQLException;
+	
+	void deleteComment(CommentDTO commentDTO) throws SQLException;
+	
+	int updateComment(CommentDTO commentDTO) throws SQLException;
 }

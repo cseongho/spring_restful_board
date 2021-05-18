@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.developia.board.dto.ArticleDTO;
 import net.developia.board.dto.BoardDTO;
+import net.developia.board.dto.CommentDTO;
 
 public interface BoardService {
 	List<BoardDTO> getBoardList() throws Exception;
@@ -24,4 +25,11 @@ public interface BoardService {
 
 	void updateArticle(ArticleDTO articleDTO) throws Exception;
 
+	void insertComment(CommentDTO commentDTO) throws Exception;
+	
+	List<CommentDTO> getCommentList(CommentDTO commentDTO) throws Exception;
+	
+	void deleteComment(CommentDTO commentDTO) throws Exception;
+	
+	void updateComment(CommentDTO commentDTO) throws Exception;
 }

@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.developia.board.dao.BoardDAO;
 import net.developia.board.dto.ArticleDTO;
 import net.developia.board.dto.BoardDTO;
+import net.developia.board.dto.CommentDTO;
 
 @Slf4j
 @Service
@@ -125,5 +126,46 @@ public class BoardServiceImpl implements BoardService {
 		}
 	}
 
+	@Override
+	public void insertComment(CommentDTO commentDTO) throws Exception {
+		try {
+			boardDAO.insertComment(commentDTO);
+		} catch (Exception e) {
+			log.info(e.getMessage());
+			throw e;
+		}
+	}
+	
+	@Override
+	public List<CommentDTO> getCommentList(CommentDTO commentDTO) throws Exception {
+		try {
+			return boardDAO.getCommentList(commentDTO);
+		} catch (Exception e) {
+			log.info(e.getMessage());
+			throw e;
+		}
+	}
+
+	@Override
+	public void deleteComment(CommentDTO commentDTO) throws Exception {
+		try {
+			boardDAO.deleteComment(commentDTO);
+		} catch (Exception e) {
+			log.info(e.getMessage());
+			throw e;
+		}
+	}
+	
+	@Override
+	public void updateComment(CommentDTO commentDTO) throws Exception {
+		try {
+			if (boardDAO.updateComment(commentDTO) == 0) {
+				throw new RuntimeException("댓글 수정 실패");
+			}
+		} catch (Exception e) {
+			log.info(e.getMessage());
+			throw e;
+		}
+	}
 	
 }

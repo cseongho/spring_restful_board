@@ -79,4 +79,31 @@
 				art_content = #{art_content}
 		where   art_no = #{art_no} and usr_no = #{userDTO.usr_no}
 	</update>
+	
+	<insert id="insertComment" parameterType="CommentDTO">
+		insert into t_comment(com_no,com_content,com_ip,art_no,usr_no)
+		values(seq_comment.nextval,#{com_content},#{com_ip},#{art_no},#{userDTO.usr_no})
+	</insert>
+
+	<select id="getCommentList" parameterType="CommentDTO" resultType="CommentDTO">
+		select com_no, com_content, com_regdate, com_like, com_dislike
+		      ,com_ip, art_no, usr_no as "userDTO.usr_no", usr_id as "userDTO.usr_id"
+		      ,usr_name as "userDTO.usr_name"
+		from   t_comment c inner join t_user u
+		using  (usr_no)
+		where  art_no = #{art_no}
+		order  by com_no desc
+	</select>
+	
+	<delete id="deleteComment" parameterType="CommentDTO">
+		delete from t_comment
+		where com_no = #{com_no} and  usr_no = #{userDTO.usr_no}
+	</delete>
+	
+	<update id="updateComment" parameterType="CommentDTO">
+		update t_comment set
+		       com_content = #{com_content}
+		where com_no = #{com_no} and  usr_no = #{userDTO.usr_no}
+	</update>
+	
 </mapper>
