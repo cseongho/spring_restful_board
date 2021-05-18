@@ -1,7 +1,7 @@
 # spring_restful_board
 Spring Restful Board Example Project
 
-   Spring Lacay Project
+   Springframework 4.3.18.RELEASE
    
 - User : Login, Logout, Signup
 - Board : Create, Delete
