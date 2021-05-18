@@ -61,7 +61,7 @@ public class UserController {
 		
 		ModelAndView mav = new ModelAndView("result");
 		mav.addObject("msg", userInfo.getUsr_name() + 
-				 "(" + userInfo.getUsr_id() + ")님이 로그아웃 하였습니다.");
+				 "(" + userInfo.getUsr_id() + ")");
 		mav.addObject("url", "./");
 		return mav;
 	}

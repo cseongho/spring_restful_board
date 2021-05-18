@@ -61,4 +61,15 @@
 		from   t_article 
 		inner join t_user using (usr_no) where art_no = #{art_no}
 	</select>
+	
+	<update id="updateReadcnt" parameterType="long">
+		update t_article set
+		       art_readcnt = art_readcnt + 1
+		where  art_no = #{art_no}
+	</update>
+	
+	<delete id="deleteArticle" parameterType="ArticleDTO">
+		delete from t_article
+		where  art_no = #{art_no} and usr_no = #{userDTO.usr_no}
+	</delete>
 </mapper>

@@ -20,4 +20,8 @@ public interface BoardDAO {
 
 	ArticleDTO getDetail(long art_no) throws SQLException;
 
+	int updateReadcnt(long art_no) throws SQLException;
+
+	int deleteArticle(ArticleDTO articleDTO) throws SQLException;
+
 }

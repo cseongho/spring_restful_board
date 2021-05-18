@@ -54,7 +54,7 @@ public class ArticleController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			ModelAndView mav = new ModelAndView("result");
-			mav.addObject("msg","입력 실패");
+			mav.addObject("msg","");
 			mav.addObject("url","javascript:history.back();");
 			return mav;
 		}

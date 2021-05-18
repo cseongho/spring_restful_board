@@ -57,13 +57,13 @@ public class BoardController {
 		try {
 			boardService.insertBoard(boardDTO);
 			ModelAndView mav = new ModelAndView("result");
-			mav.addObject("msg", boardDTO.getBoa_name() + "이 생성되었습니다.");
+			mav.addObject("msg", boardDTO.getBoa_name() + "");
 			mav.addObject("url", "./");
 			return mav;
 		} catch (Exception e) {
 			e.printStackTrace();
 			ModelAndView mav = new ModelAndView("result");
-			mav.addObject("msg", boardDTO.getBoa_name() + "생성 실패");
+			mav.addObject("msg", boardDTO.getBoa_name() + "");
 			mav.addObject("url", "./");
 			return mav;
 		}

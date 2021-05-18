@@ -56,7 +56,7 @@ public class BoardServiceImpl implements BoardService {
 		try {
 			BoardDTO boardDTO = boardDAO.getBoard(boa_no);
 			if (boardDTO == null) {
-				throw new RuntimeException("Àß¸øµÈ °Ô½ÃÆÇ ¹øÈ£ÀÔ´Ï´Ù.");
+				throw new RuntimeException("");
 			}
 			return boardDTO;
 		} catch (Exception e) {
@@ -75,19 +75,24 @@ public class BoardServiceImpl implements BoardService {
 		}
 	}
 
-//	@Override
-//	public void updateReadcnt(long art_no) throws Exception {
-//		if (boardDAO.updateReadcnt(art_no) == 0) {
-//			throw new RuntimeException(art_no +"¹ø ±ÛÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
-//		}
-//	}
+	@Override
+	public void updateReadcnt(long art_no) throws Exception {
+		try {
+			if (boardDAO.updateReadcnt(art_no) == 0) {
+				throw new RuntimeException(art_no +"");
+			}
+		} catch (SQLException e) {
+			log.info(e.getMessage());
+			throw e;
+		}
+	}
 
 	@Override
 	public ArticleDTO getDetail(long art_no) throws Exception {
 		try {
 			ArticleDTO articleDTO = boardDAO.getDetail(art_no);
 			if (articleDTO == null) {
-				throw new RuntimeException(art_no +"¹ø ±ÛÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+				throw new RuntimeException(art_no +"");
 			}
 			return articleDTO;
 		} catch (Exception e) {
@@ -95,6 +100,20 @@ public class BoardServiceImpl implements BoardService {
 			throw e;
 		}
 	}
+
+	@Override
+	public void deleteArticle(ArticleDTO articleDTO) throws Exception {
+		try {
+			if (boardDAO.deleteArticle(articleDTO) == 0) {
+				throw new RuntimeException("ì¡´ì¬í•˜ì§€ ì•Šê±°ë‚˜ ì ‘ê·¼ ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.");
+			}
+		} catch (SQLException e) {
+			log.info(e.getMessage());
+			throw e;
+		}
+	}
+
+	
 
 	
 }
