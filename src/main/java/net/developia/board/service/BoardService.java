@@ -20,6 +20,8 @@ public interface BoardService {
 
 	void updateReadcnt(long art_no) throws Exception;
 
-	void deleteArticle(ArticleDTO articleDTO) throws Exception;;
+	void deleteArticle(ArticleDTO articleDTO) throws Exception;
+
+	void updateArticle(ArticleDTO articleDTO) throws Exception;
 
 }

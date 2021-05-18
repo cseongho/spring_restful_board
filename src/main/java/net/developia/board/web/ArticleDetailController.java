@@ -51,10 +51,37 @@ public class ArticleDetailController {
 	}
 	
 	@GetMapping("/update")
-	public void update() {}
+	public String update(@PathVariable long art_no, Model model) {
+		try {
+			boardService.updateReadcnt(art_no);
+			ArticleDTO articleDTO = boardService.getDetail(art_no);
+			model.addAttribute("articleDTO", articleDTO);
+			return "board/update";
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("msg", e.getMessage());
+			model.addAttribute("url", "../");
+			return "result";
+		}
+	}
 	
 	@PostMapping("/update")
-	public void update(@ModelAttribute ArticleDTO articleDTO) {}
+	public ModelAndView update(@ModelAttribute ArticleDTO articleDTO, HttpSession session) {
+		articleDTO.setUserDTO((UserDTO)session.getAttribute("userInfo"));
+		try {
+			boardService.updateArticle(articleDTO);
+			ModelAndView mav = new ModelAndView("result");
+			mav.addObject("msg", articleDTO.getArt_no() + "번 게시물이 수정되었습니다.");
+			mav.addObject("url", "./");
+			return mav;
+		} catch (Exception e) {
+			e.printStackTrace();
+			ModelAndView mav = new ModelAndView("result");
+			mav.addObject("msg", e.getMessage());
+			mav.addObject("url", "javascript:history.back();");
+			return mav;
+		}
+	}
 	
 	@GetMapping("/delete")
 	public ModelAndView delete(@ModelAttribute ArticleDTO articleDTO, HttpSession session) {
