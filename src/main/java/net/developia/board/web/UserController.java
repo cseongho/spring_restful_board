@@ -31,6 +31,7 @@ public class UserController {
 	
 	@GetMapping(value="/")
 	public String login2() {
+		log.info("login 수행중");
 		return "user/login";
 	}
 	
