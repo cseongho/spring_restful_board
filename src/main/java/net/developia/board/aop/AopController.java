@@ -58,7 +58,7 @@ public class AopController {
 	
 	
 	@Before("execution(* net.developia.*.*.UserController.login(..))")
-	public void ad_login(JoinPoint joinPoint) {
+	public void ad_login(JoinPoint joinPoint) { 
 		log.info("★★★★★★★★★★★★");
 		log.info("★   login intercept  ★");
 		log.info("★★★★★★★★★★★★");
