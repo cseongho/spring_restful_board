@@ -7,7 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href='<c:url value="/resources/css/style.css" />' type="text/css">
+<!--<link rel="stylesheet" href='<c:url value="/resources/css/style.css" />' type="text/css"> -->
+<style type="text/css">
+.msg_warn {
+	color:red;
+}
+</style>
 </head>
 <body>
 <form:form method="post" commandName="memoDTO">
