@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,7 +42,7 @@ public class ArticleController {
 	
 	@PostMapping("insert")
 	public ModelAndView insert(
-		@ModelAttribute ArticleDTO articleDTO, 
+		@Valid @ModelAttribute ArticleDTO articleDTO, 
 		HttpSession session,
 		HttpServletRequest request) {
 		
